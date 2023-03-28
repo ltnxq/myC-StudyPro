@@ -12,7 +12,7 @@
 
 #define LOG_API
 
-enum class LOG_LEVEL
+enum  LOG_LEVEL
 {
 	LOG_LEVEL_TRACE,
 	LOG_LEVEL_DEBUG,
@@ -44,6 +44,7 @@ public:
 	static bool init(const char* pszLogFileName = nullptr, bool m_bTruncateLongLine = false, int64_t nRollSize = 10 * 1024 * 1024);
 	static void setLevel(LOG_LEVEL nlevel);
 	static bool isRunning();
+	static void uninit();
 
 	//不输出线程ID号和所在函数签名，行号
 	static bool output(long nlevel, const char* pszFmt, ...);
@@ -70,6 +71,8 @@ private:
 
 	static const char* ullto4Str(int n);
 	static char* formLog(int& index, char* szbuf, size_t size_buf, unsigned char* buffer, size_t size);
+
+	static void writeThreadProc();
 private:
 		static bool          m_bToFile;
 	    static FILE*         m_hLogFile;
