@@ -133,6 +133,7 @@ int CConfigFileReader::writeFile(const char* filename)
 		//初始化为0
 		memset(szPaire, 0, sizeof(szPaire));
 		snprintf(szPaire, sizeof(szPaire), "%s=%s\n", it->first.c_str(), it->second.c_str());
+		//1代表每个对象的大小 
 		size_t ret = fwrite(szPaire, strlen(szPaire), 1, fp);
 		if (ret != 1) {
 			fclose(fp);

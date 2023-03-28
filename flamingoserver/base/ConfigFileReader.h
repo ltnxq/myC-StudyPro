@@ -8,7 +8,7 @@ public:
 	CConfigFileReader(const char* filename);
 	~CConfigFileReader();
 
-	char* getConfigName(const char* name) const;
+	char* getConfigName(const char* name) ;
 	int setConfigValue(const char* name, const char* value);
 private:
 	void loadFile(const char* filename);
